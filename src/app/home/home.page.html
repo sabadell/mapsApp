@@ -4,17 +4,20 @@
       Blank
     </ion-title>
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar placeholder="Destino" (ionChange)="buscarEndereco($event)"></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-list  [hidden]="!listaEnderecos.length">
+  <ion-item button *ngFor="let endereco of listaEnderecos" lines="full" (click)="tracarRota(endereco)">
+  {{endereco.description}}
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+</ion-list>
+
+ <div #map id="map"></div>
 </ion-content>
